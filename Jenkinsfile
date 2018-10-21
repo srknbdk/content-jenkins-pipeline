@@ -9,8 +9,17 @@ pipeline {
       }
     }
     stage('run') {
-      steps {
-        sh 'java -jar rectangle.jar 7 9'
+      parallel {
+        stage('run') {
+          steps {
+            sh 'java -jar rectangle.jar 7 9'
+          }
+        }
+        stage('parallel') {
+          steps {
+            readFile(file: 'README.md', encoding: 'UTF8')
+          }
+        }
       }
     }
     stage('deneme') {
