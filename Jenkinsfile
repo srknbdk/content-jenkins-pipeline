@@ -12,7 +12,7 @@ pipeline {
       parallel {
         stage('run') {
           steps {
-            sh 'java -jar rectangle.jar'
+            sh 'java -jar rectangle.jar 7 9'
           }
         }
         stage('parallel') {
