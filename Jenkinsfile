@@ -11,11 +11,17 @@ pipeline {
     stage('run') {
       parallel {
         stage('run') {
+          environment {
+            type = 'x'
+          }
           steps {
             sh 'java -jar rectangle.jar 7 9'
           }
         }
         stage('parallel') {
+          environment {
+            type = 'xxx'
+          }
           steps {
             readFile(file: 'README.md', encoding: 'UTF8')
           }
